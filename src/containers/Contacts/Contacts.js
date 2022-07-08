@@ -1,10 +1,16 @@
 import React from 'react';
+import NavBar from "../../components/NavBar/NavBar";
 
 const Contacts = () => {
     return (
-        <div className='contacts'>
-            Contacts
-        </div>
+        <>
+            <NavBar/>
+
+            <div className='contacts'>
+                Contacts
+            </div>
+        </>
+
     );
 };
 

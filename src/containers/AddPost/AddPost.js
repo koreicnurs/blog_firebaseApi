@@ -3,6 +3,7 @@ import axiosApi from "../../axiosApi";
 import dayjs from "dayjs";
 import Form from "../../components/Form/Form";
 import Spinner from "../../UI/Spinner/Spinner";
+import NavBar from "../../components/NavBar/NavBar";
 
 const AddPost = ({history}) => {
 
@@ -26,7 +27,7 @@ const AddPost = ({history}) => {
         e.preventDefault();
         setLoading(true)
         try {
-            await axiosApi.post('/posts.json', {
+            await axiosApi.post('/posts/add.json', {
                 post,
             });
         } finally {
@@ -36,17 +37,22 @@ const AddPost = ({history}) => {
     };
 
     return loading ? (<Spinner/>) :(
-        <Form
-            formSubmit={addPost}
-            inputName='title'
-            inputValue={post.title}
-            changeInputForm={onChangeInput}
-            name='description'
-            value={post.description}
-            textOnChangeTextArea={onChangeInput}
-            btnType='submit'
-            btnName='Add'
-        />
+        <>
+            <NavBar/>
+
+            <Form
+                formSubmit={addPost}
+                inputName='title'
+                inputValue={post.title}
+                changeInputForm={onChangeInput}
+                name='description'
+                value={post.description}
+                textOnChangeTextArea={onChangeInput}
+                btnType='submit'
+                btnName='Add'
+            />
+        </>
+
     );
 };
 

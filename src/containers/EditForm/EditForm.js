@@ -3,8 +3,9 @@ import Form from "../../components/Form/Form";
 import axiosApi from "../../axiosApi";
 import {useEffect} from "react";
 import dayjs from "dayjs";
-import {useHistory} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import Spinner from "../../UI/Spinner/Spinner";
+import NavBar from "../../components/NavBar/NavBar";
 
 const EditForm = ({match}) => {
 
@@ -50,17 +51,22 @@ const EditForm = ({match}) => {
     };
 
     return loading ? (<Spinner/>) : (
-        <Form
-            formSubmit={editPost}
-            inputName='title'
-            inputValue={post.title}
-            changeInputForm={onChangeInput}
-            name='description'
-            value={post.description}
-            textOnChangeTextArea={onChangeInput}
-            btnType='submit'
-            btnName='Edit'
-        />
+        <>
+            <NavLink to='/'>Home</NavLink>
+
+            <Form
+                formSubmit={editPost}
+                inputName='title'
+                inputValue={post.title}
+                changeInputForm={onChangeInput}
+                name='description'
+                value={post.description}
+                textOnChangeTextArea={onChangeInput}
+                btnType='submit'
+                btnName='Edit'
+            />
+        </>
+
     );
 };
 

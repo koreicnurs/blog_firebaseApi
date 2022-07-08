@@ -40,9 +40,7 @@ const Blog = () => {
         :
         posts && (
             <>
-                <div className='blog'>
-                    <NavBar/>
-                </div>
+                <NavBar/>
 
                 <div className='posts'>
                     {posts.map(p => {

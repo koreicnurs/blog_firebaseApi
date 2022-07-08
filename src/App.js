@@ -1,10 +1,12 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Blog from "./containers/Blog/Blog";
-import Home from "./components/Home/Home";
-import AddPost from "./components/AddPost/AddPost";
-import About from "./components/About/About";
-import Contacts from "./components/Contacts/Contacts";
+import Home from "./containers/Home/Home";
+import AddPost from "./containers/AddPost/AddPost";
+import About from "./containers/About/About";
+import Contacts from "./containers/Contacts/Contacts";
+import FullPost from "./containers/FullPost/FullPost";
+import EditForm from "./containers/EditForm/EditForm";
 
 const App = () => {
     return (
@@ -15,6 +17,8 @@ const App = () => {
                 <Route path="/add" component={AddPost}/>
                 <Route path="/about" component={About}/>
                 <Route path="/contacts" component={Contacts}/>
+                <Route path="/posts/:id" exact component={FullPost}/>
+                <Route path="/posts/:id/edit" component={EditForm}/>
             </Switch>
         </BrowserRouter>
     );

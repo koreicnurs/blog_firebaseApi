@@ -1,0 +1,15 @@
+.post {
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.btn-danger {
+    margin-right: 30px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}

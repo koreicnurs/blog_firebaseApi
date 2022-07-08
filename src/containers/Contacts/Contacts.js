@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from "../../components/NavBar/NavBar";
+import './Contacts.css';
 
 const Contacts = () => {
     return (
@@ -7,7 +8,9 @@ const Contacts = () => {
             <NavBar/>
 
             <div className='contacts'>
-                Contacts
+                <p>ул. Медерова</p>
+                <p>График работы: Пн-Сб 9-18, Вс 9-18</p>
+                <p>0798951351</p>
             </div>
         </>
 

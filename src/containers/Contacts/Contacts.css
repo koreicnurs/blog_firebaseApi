@@ -1,0 +1,17 @@
+.contacts {
+    display: flex;
+    flex-direction: column;
+}
+
+.contacts.hover {
+    transform: translate(0, 0);
+}
+
+.contacts p {
+    color: #521751;
+    background: none;
+    text-align: end;
+    font-style: italic;
+    font-size: 25px;
+    margin-right: 50px;
+}

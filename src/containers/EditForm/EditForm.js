@@ -5,7 +5,6 @@ import {useEffect} from "react";
 import dayjs from "dayjs";
 import {NavLink, useHistory} from "react-router-dom";
 import Spinner from "../../UI/Spinner/Spinner";
-import NavBar from "../../components/NavBar/NavBar";
 
 const EditForm = ({match}) => {
 
@@ -17,14 +16,15 @@ const EditForm = ({match}) => {
     });
 
     useEffect(() => {
-        setLoading(true)
+        setLoading(true);
         const getDataPost = async () => {
             const response = await axiosApi(`/posts/${match.params.id}.json`);
-            setPost(response.data.post)
+            setPost(response.data.post);
         };
 
         getDataPost().catch();
-        setLoading(false)
+        setLoading(false);
+
     }, [match.params.id]);
 
     const onChangeInput = e => {
@@ -39,20 +39,20 @@ const EditForm = ({match}) => {
 
     const editPost = async (e) => {
         e.preventDefault();
-        setLoading(true)
+        setLoading(true);
         try {
             await axiosApi.put(`/posts/${match.params.id}.json`, {'post': post});
         } catch (e) {
 
         } finally {
-            setLoading(false)
+            setLoading(false);
             history.push('/');
         }
     };
 
     return loading ? (<Spinner/>) : (
         <>
-            <NavLink to='/'>Home</NavLink>
+            <NavLink className='nav nav-link' to='/'>Home</NavLink>
 
             <Form
                 formSubmit={editPost}

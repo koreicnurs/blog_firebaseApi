@@ -1,0 +1,27 @@
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: darkcyan;
+}
+
+.about h4 {
+    color: #521751;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.about p {
+    font-style: italic;
+    font-size: 20px;
+    text-align: center;
+    background: lightblue;
+    border-radius: 20px;
+    width: 85%;
+}
+
+.about h5 {
+    color: brown;
+    font-size: 25px;
+}
+

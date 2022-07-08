@@ -25,13 +25,13 @@ const AddPost = ({history}) => {
 
     const addPost = async (e) => {
         e.preventDefault();
-        setLoading(true)
+        setLoading(true);
         try {
-            await axiosApi.post('/posts/add.json', {
+            await axiosApi.post('/posts.json', {
                 post,
             });
         } finally {
-            setLoading(false)
+            setLoading(false);
             history.push('/');
         }
     };

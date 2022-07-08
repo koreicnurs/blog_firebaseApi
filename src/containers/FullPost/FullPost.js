@@ -2,49 +2,57 @@ import React, {useEffect, useState} from 'react';
 import axiosApi from "../../axiosApi";
 import {NavLink, useHistory} from "react-router-dom";
 import Spinner from "../../UI/Spinner/Spinner";
-import NavBar from "../../components/NavBar/NavBar";
+import Button from "../../UI/Button/Button";
+import './FullPost.css';
 
 const FullPost = ({match}) => {
 
     const [fullPost, setFullPost] = useState(null);
     const [loading, setLoading] = useState(false);
-    const history = useHistory()
+    const history = useHistory();
 
     useEffect(() => {
-        setLoading(true)
+        setLoading(true);
         const getDataPost = async () => {
             const response = await axiosApi(`/posts/${match.params.id}.json`);
-            setFullPost(response.data.post)
+            setFullPost(response.data.post);
         };
 
         getDataPost().catch();
-        setLoading(false)
+        setLoading(false);
 
     }, [match.params.id]);
 
     const deletePost = async (id) => {
-        setLoading(true)
+        setLoading(true);
         try {
             if (id === match.params.id) {
                 await axiosApi.delete(`/posts/${match.params.id}.json`);
             }
         } finally {
-            setLoading(false)
-            history.push('/')
+            setLoading(false);
+            history.push('/');
         }
-    }
+    };
 
     return loading ? (<Spinner/>) :
         fullPost && (
             <>
-                <NavLink to='/'>Home</NavLink>
+                <NavLink className='nav nav-link' to='/'>Home</NavLink>
 
-                <div className='post'>
-                    <p>{fullPost.day}</p>
-                    <p>{fullPost.title}</p>
-                    <p>{fullPost.description}</p>
-                    <button type='button' onClick={e => deletePost(match.params.id)}>Delete</button>
-                    <NavLink to={`/posts/${match.params.id}/edit`}>Edit</NavLink>
+                <div className="card post">
+                    <div className="card-body">
+                        <h6 className='card-text date'>Created on: {fullPost.day}</h6>
+                        <h2 className="card-title">Title: {fullPost.title}</h2>
+                        <p>Description: {fullPost.description}</p>
+                        <Button
+                            classType='danger'
+                            type='button'
+                            name='Delete'
+                            clicked={e => deletePost(match.params.id)}
+                        />
+                        <NavLink className="btn btn-warning" to={`/posts/${match.params.id}/edit`}>Edit</NavLink>
+                    </div>
                 </div>
             </>
 
